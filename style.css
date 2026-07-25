@@ -722,3 +722,115 @@ footer {
   #process .process-steps {
     grid-template-columns: 1fr 1fr;
   }
+
+/* ── hamburger button (hidden on desktop) ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0;
+  z-index: 300;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: transform .3s, opacity .3s;
+}
+/* animate to X when open */
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+ 
+/* ── slide-out mobile menu ── */
+.mobile-menu {
+  position: fixed;
+  top: 0; right: 0;
+  width: 78%;
+  max-width: 340px;
+  height: 100vh;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.23,1,.32,1);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu-close {
+  position: absolute;
+  top: 1.5rem; right: 1.8rem;
+  font-size: 1.4rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.mobile-menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.mobile-menu-links a {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: color .2s;
+}
+.mobile-menu-links a:hover { color: var(--accent); }
+ 
+/* dark overlay behind the menu */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4,8,18,.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+  z-index: 998;
+}
+.mobile-menu-overlay.open { opacity: 1; visibility: visible; }
+ 
+/* ── MOBILE OVERRIDES ── */
+@media (max-width: 900px) {
+  /* show burger, hide desktop links */
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+ 
+  /* SHOW the photo card on mobile (override the old display:none) */
+  .hero-visual {
+    display: flex !important;
+    margin-top: 3rem;
+  }
+  .hero-card-stack {
+    margin-right: 0;      /* center it on mobile */
+    transform: scale(.9); /* fits small screens */
+  }
+ 
+  /* How I Work → 2 x 2 on mobile */
+  #process .process-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+ 
+/* very small phones: keep process 2x2 (override the earlier 1-col rule) */
+@media (max-width: 560px) {
+  #process .process-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+}
