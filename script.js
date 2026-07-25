@@ -42,3 +42,26 @@ toggle.addEventListener('click',()=>{
 if(window.matchMedia('(prefers-color-scheme: light)').matches){
   html.setAttribute('data-theme','light');
 }
+
+// ── Mobile hamburger menu
+const hamburger = document.getElementById('navHamburger');
+const navLinks = document.getElementById('navLinks');
+ 
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+ 
+  // Close the menu when any link is tapped
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+    });
+  });
+}
