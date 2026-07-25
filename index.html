@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PIXELBYTE — Idris A.O | Brand Designer & Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="cursor" id="cursor">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+</div>
+<div class="scroll-progress" id="scrollBar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">PIXELBYTE<span>.</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="work.html">My Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
+      <span class="toggle-icon">🌙</span>
+      <div class="toggle-pill" id="togglePill"></div>
+      <span class="toggle-icon">☀️</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob hb1"></div>
+  <div class="hero-blob hb2"></div>
+
+  <div style="z-index:2">
+    <div class="hero-eyebrow">Strategic Brand Designer / Web Developer</div>
+    <h1 class="hero-name">
+      Great brands<br> don't happen by <em>Accident.</em>
+    </h1>
+    <p class="hero-desc">
+      I'm Idris A.O, founder of PIXELBYTE. Based in Lagos, Nigeria, I create strategic brand identities, impactful marketing designs, and modern websites that help businesses strengthen their presence and drive engagement.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-back">
+        <img class="hcard-photo-blur" src="profile.jpg" alt=""/>
+      </div>
+      <div class="hcard-front">
+        <img class="hcard-photo" src="profile.jpg" alt="Idris A.O — PIXELBYTE" onclick="openHeroLightbox()"/>
+        <div class="hcard-label">PIXELBYTE</div>
+        <div class="hcard-sub">Graphics + Code</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Brand Identity <span class="mdot"></span></span>
+    <span class="marquee-item">Visual Systems <span class="mdot"></span></span>
+    <span class="marquee-item">Web Design <span class="mdot"></span></span>
+    <span class="marquee-item">UI / UX <span class="mdot"></span></span>
+    <span class="marquee-item">Typography <span class="mdot"></span></span>
+    <span class="marquee-item">Motion <span class="mdot"></span></span>
+    <span class="marquee-item">Brand Identity <span class="mdot"></span></span>
+    <span class="marquee-item">Visual Systems <span class="mdot"></span></span>
+    <span class="marquee-item">Web Design <span class="mdot"></span></span>
+    <span class="marquee-item">UI / UX <span class="mdot"></span></span>
+    <span class="marquee-item">Typography <span class="mdot"></span></span>
+    <span class="marquee-item">Motion <span class="mdot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Every pixel<br>has a <em>reason.</em></h2>
+    <div class="about-stats">
+      <div class="stat-box"><div class="stat-num">6<span>+</span></div><div class="stat-desc">Years Experience</div></div>
+      <div class="stat-box"><div class="stat-num">35<span>+</span></div><div class="stat-desc">Projects Completed</div></div>
+      <div class="stat-box"><div class="stat-num">12<span>+</span></div><div class="stat-desc">Brands Designed</div></div>
+      <div class="stat-box"><div class="stat-num">5<span>+</span></div><div class="stat-desc">Websites Built</div></div>
+    </div>
+  </div>
+  <div class="about-right reveal" style="transition-delay:.2s">
+    <p>I'm Idris A.O, a Strategic Brand Designer and Web Developer based in Lagos, Nigeria. Through PIXELBYTE, I create brand identities and digital experiences that help businesses stand out and connect with their audience.</p>
+    <p>Combining branding strategy, graphic design, and web development allows me to deliver complete solutions — from logo creation and visual identity systems to responsive websites and digital campaigns.</p>
+    <p>My goal is to create designs that not only look professional but also drive engagement, strengthen business presence, and support long-term growth.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title">Services built for <em>real results</em></h2>
+  </div>
+  <div class="services-grid reveal" style="transition-delay:.18s">
+    <a href="work.html#branding" class="service-card" style="text-decoration:none;display:block;">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+        <rect x="4" y="4" width="34" height="34" rx="2" stroke="var(--accent)" stroke-width="1.2"/>
+        <circle cx="21" cy="21" r="8" stroke="var(--accent)" stroke-width="1.2"/>
+        <line x1="4" y1="21" x2="13" y2="21" stroke="var(--text)" stroke-width="1"/>
+        <line x1="29" y1="21" x2="38" y2="21" stroke="var(--text)" stroke-width="1"/>
+      </svg>
+      <div class="service-name">Brand Identity</div>
+      <div class="service-desc">Complete visual identities — logo, color, type, and everything in between — built as a coherent, living system.</div>
+      <div class="service-tags">
+        <span class="tag">Logo</span><span class="tag">Style Guide</span>
+        <span class="tag">Color System</span><span class="tag">Typography</span>
+      </div>
+    </a>
+    <a href="work.html#webdev" class="service-card" style="text-decoration:none;display:block;">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+        <rect x="2" y="8" width="38" height="26" rx="2" stroke="var(--accent)" stroke-width="1.2"/>
+        <rect x="8" y="14" width="12" height="12" rx="1" stroke="var(--text)" stroke-width="1"/>
+        <line x1="24" y1="16" x2="34" y2="16" stroke="var(--muted)" stroke-width="1.1"/>
+        <line x1="24" y1="20" x2="34" y2="20" stroke="var(--muted)" stroke-width="1.1"/>
+        <line x1="24" y1="24" x2="30" y2="24" stroke="var(--muted)" stroke-width="1.1"/>
+        <line x1="2" y1="34" x2="40" y2="34" stroke="var(--accent)" stroke-width="1.2"/>
+      </svg>
+      <div class="service-name">Web Design & Dev</div>
+      <div class="service-desc">Pixel-perfect websites I design and code myself — responsive, fast, and crafted with the same care as any brand asset.</div>
+      <div class="service-tags">
+        <span class="tag">React</span><span class="tag">HTML/CSS</span>
+        <span class="tag">Responsive</span><span class="tag">CMS</span>
+      </div>
+    </a>
+    <a href="work.html#ads" class="service-card" style="text-decoration:none;display:block;">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+        <path d="M8 34 L8 16 L21 8 L34 16 L34 34" stroke="var(--accent)" stroke-width="1.2"/>
+        <rect x="16" y="22" width="10" height="12" stroke="var(--text)" stroke-width="1"/>
+        <circle cx="21" cy="17" r="3" stroke="var(--accent)" stroke-width="1.2"/>
+      </svg>
+      <div class="service-name">Visual Strategy</div>
+      <div class="service-desc">Helping brands understand what they look like, what they should look like, and how to close the gap — with intention.</div>
+      <div class="service-tags">
+        <span class="tag">Audit</span><span class="tag">Positioning</span>
+        <span class="tag">Mood Boards</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header reveal">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Recent <em>Projects</em></h2>
+    </div>
+    <a href="work.html" class="btn-ghost" style="font-size:.72rem">All Projects →</a>
+  </div>
+  <div class="work-grid reveal" style="transition-delay:.15s">
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="mindbudget-cover.png" alt="MindBudget"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">MindBudget — Web App</div><div class="work-cat">Flask · PostgreSQL · Full Stack</div></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="nextrade-cover.png" alt="NexTrade"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">NexTrade — Trading Platform</div><div class="work-cat">React · Supabase · Tailwind</div></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="bao-cover.png" alt="BAO Travels n Tours"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">BAO Travels N Tours — Brand Identity</div><div class="work-cat">Logo · Brand Guideline · Stationery</div></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="new-adsArtboard-2.png" alt="Heyloni Ad"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">Heyloni — Social Media Campaign</div><div class="work-cat">Ads Design · Digital</div></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="GadjetsArtboard-1.png" alt="Gadjets Ad"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">Gadjets — Product Ad Campaign</div><div class="work-cat">Ads Design · Product</div></div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <img src="acres-cover.png" alt="ACRES Buildwell"/>
+        <div class="work-overlay-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="work-label-wrap"><div class="work-label">ACRES Buildwell — Brand Identity</div><div class="work-cat">Logo · Company Profile · Print</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="reveal">
+    <div class="section-label">How I Work</div>
+    <h2 class="section-title">A process built on <em>clarity</em></h2>
+  </div>
+  <div class="process-steps reveal" style="transition-delay:.15s">
+    <div class="process-step">
+      <div class="step-num">01 — Discover</div>
+      <div class="step-title">Understand the Vision</div>
+      <div class="step-desc">Every project starts with a proper conversation. I take time to understand your business, your customers, and the goals behind the brand before any design begins.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02 — Define</div>
+      <div class="step-title">Set the Direction</div>
+      <div class="step-desc">Strategy comes before style. We agree on the message, positioning, and visual direction — so the work is built on a clear plan, not guesswork.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03 — Design</div>
+      <div class="step-title">Build with Intent</div>
+      <div class="step-desc">I develop focused, purposeful designs and refine them with your feedback — delivering work that is professional, modern, and true to your brand.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04 — Deliver</div>
+      <div class="step-title">Deliver &amp; Support</div>
+      <div class="step-desc">You receive clean, well-organised files ready for use — and I remain available after delivery to make sure everything works exactly as it should.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="section-label" style="justify-content:center">Kind Words</div>
+  <blockquote class="testimonial-quote reveal">
+    "PIXELBYTE gave BAO Travels N Tours a brand that finally matches the
+    quality of our service. From the logo to our booking materials, everything
+    now speaks <em>trust and class</em> — and our clients across Lagos and
+    beyond have noticed the difference."
+  </blockquote>
+  <div class="testimonial-author reveal" style="transition-delay:.2s">— BAO Travels N Tours</div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="contact-big">Ready to build something <em>remarkable?</em></h2>
+    <ul class="contact-list">
+      <li>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 5 6-5" stroke="var(--accent)" stroke-width="1.2"/><rect x="1" y="3" width="14" height="10" rx="1" stroke="var(--accent)" stroke-width="1.2"/></svg>
+        <a href="mailto:abdulsalamidris620@gmail.com">abdulsalamidris620@gmail.com</a>
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 10.5c-.8-.8-1.7-1.3-2.6-.5l-.8.8c-.2.2-1 .3-2.8-1.5S5.4 6.6 5.6 6.4l.8-.8c.8-.9.3-1.8-.5-2.6L4.6 1.7c-.8-.8-1.9-.6-2.5 0C.5 3.3.1 5.5 2 8s4.5 4.8 6 5.5c1.5.7 3.5.5 4.3-.4.6-.6.8-1.8 0-2.6z" stroke="var(--accent)" stroke-width="1.2"/></svg>
+        <a href="https://wa.me/2347072728964" target="_blank" rel="noopener">WhatsApp: +234 70 7272 8964</a>
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5z" stroke="var(--accent)" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="var(--accent)" stroke-width="1.2"/></svg>
+        <a href="#">Based in Lagos, Nigeria</a>
+      </li>
+    </ul>
+  </div>
+  <div class="contact-form-side reveal" style="transition-delay:.2s">
+    <form id="contactForm" action="https://formspree.io/f/xvgadzwq" method="POST">
+      <div class="form-group"><input type="text" name="name" placeholder="Your Name" required/></div>
+      <div class="form-group"><input type="email" name="email" placeholder="Email Address" required/></div>
+      <div class="form-group"><input type="text" name="project" placeholder="Project Type (Brand / Web / Both)"/></div>
+      <div class="form-group"><textarea name="message" rows="5" placeholder="Tell me about your project…" required></textarea></div>
+      <div id="formStatus" style="display:none; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.1em; padding:.6rem 0;"></div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- HERO LIGHTBOX -->
+<div class="hero-lightbox" id="heroLightbox" onclick="closeHeroLightbox()">
+  <button class="hero-lightbox-close" onclick="closeHeroLightbox()">✕ Close</button>
+  <img class="hero-lightbox-img" src="profile.jpg" alt="Idris A.O — PIXELBYTE"/>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 PIXELBYTE. All rights reserved.</div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/pixel_edits246?igsh=NWt5dWMzc3JkZHhx&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.behance.net/abdulsalamidris3" target="_blank" rel="noopener">Behance</a>
+    <a href="https://pin.it/2vy3QLzXB" target="_blank" rel="noopener">Pinterest</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.style.display = 'block';
+        status.style.color = 'var(--accent)';
+        status.textContent = '✓ Message sent — I\'ll be in touch soon.';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.style.display = 'block';
+      status.style.color = '#e05a5a';
+      status.textContent = '✕ Something went wrong. Please email me directly.';
+    }
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+</script>
+
+<script>
+  function openHeroLightbox() {
+    document.getElementById('heroLightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeHeroLightbox() {
+    document.getElementById('heroLightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeHeroLightbox();
+  });
+</script>
+</body>
+</html>

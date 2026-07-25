@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Work — PIXELBYTE</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    min-height: 38vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .page-hero-blob {
+    position: absolute; border-radius: 50%;
+    pointer-events: none;
+    animation: drift 20s ease-in-out infinite alternate;
+  }
+  .phb1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--glow) 0%, transparent 68%);
+    top: -150px; right: -80px;
+  }
+  .phb2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, var(--glow2) 0%, transparent 70%);
+    bottom: 0; left: 8%;
+    animation-delay: -10s;
+  }
+  .page-hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent);
+    display: flex; align-items: center; gap: .8rem;
+    margin-bottom: 1rem; position: relative; z-index: 2;
+  }
+  .page-hero-label::before { content:''; width:22px; height:1px; background:var(--accent); }
+  .page-hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: .95; color: var(--text);
+    position: relative; z-index: 2;
+  }
+  .page-hero-title em { font-style: italic; color: var(--accent); }
+  .page-hero-sub {
+    margin-top: 1.2rem;
+    font-size: .95rem; color: var(--muted); line-height: 1.75;
+    max-width: 480px; position: relative; z-index: 2;
+  }
+
+  /* ── FILTER TABS ── */
+  .filter-bar {
+    padding: 2.5rem 3rem 0;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition-theme);
+  }
+  .filter-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+    background: none; border: none; cursor: none;
+    padding: .6rem 0; position: relative;
+    transition: color .2s;
+  }
+  .filter-btn::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width .3s cubic-bezier(.23,1,.32,1);
+  }
+  .filter-btn:hover { color: var(--text); }
+  .filter-btn.active { color: var(--text); }
+  .filter-btn.active::after { width: 100%; }
+  .filter-divider {
+    width: 1px; height: 14px;
+    background: var(--border);
+  }
+
+  /* ── CATEGORY SECTION ── */
+  .category-section {
+    padding: 5rem 3rem;
+    transition: var(--transition-theme);
+  }
+  .category-section:nth-child(even) { background: var(--bg2); }
+  .category-section:nth-child(odd)  { background: var(--bg);  }
+
+  .category-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 3rem;
+  }
+  .category-count {
+    font-family: 'Space Mono', monospace;
+    font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--muted); margin-top: .4rem;
+  }
+
+  /* ── WEB DEV 2-COL GRID ── */
+  .webdev-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .webdev-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color .3s, transform .3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .webdev-card:hover {
+    border-color: rgba(61,142,240,.4);
+    transform: translateY(-3px);
+  }
+  .webdev-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+  }
+  .webdev-meta {
+    padding: 1.4rem 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    flex: 1;
+  }
+  .webdev-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: .8rem;
+  }
+  .webdev-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .webdev-cat {
+    font-family: 'Space Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: .2rem;
+  }
+  .webdev-desc {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .webdev-card:hover .webdev-thumb img { transform: scale(1.04); }
+  @media(max-width:900px){
+    .webdev-2col { grid-template-columns: 1fr; }
+  }
+
+  /* ── ADS GRID ── */
+  .ads-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 320px));
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  .ads-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .3s, transform .3s;
+  }
+  .ads-card:hover {
+    border-color: rgba(61,142,240,.45);
+    transform: translateY(-4px);
+  }
+  /* Heyloni 5x6 portrait */
+  .ads-card.ratio-5x6 .ads-img-wrap {
+    aspect-ratio: 5 / 6;
+  }
+  /* Gadjets 5x5 square */
+  .ads-card.ratio-5x5 .ads-img-wrap {
+    aspect-ratio: 5 / 5;
+  }
+  .ads-img-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+  .ads-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .5s cubic-bezier(.23,1,.32,1);
+  }
+  .ads-card:hover .ads-img-wrap img { transform: scale(1.04); }
+  .ads-card-meta {
+    padding: .9rem 1.1rem;
+    border-top: 1px solid var(--border);
+  }
+  .ads-card-meta .work-meta-name { font-size: .8rem; }
+
+  /* Client section label */
+  .ads-client-label {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .ads-client-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .ads-client-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); white-space: nowrap;
+    padding: .3rem .8rem; border: 1px solid var(--border);
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(4,8,18,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-img {
+    max-width: 88vw;
+    max-height: 88vh;
+    object-fit: contain;
+    box-shadow: 0 24px 80px rgba(0,0,0,.6);
+    animation: lbIn .28s cubic-bezier(.23,1,.32,1);
+  }
+  @keyframes lbIn {
+    from { opacity:0; transform:scale(.9); }
+    to   { opacity:1; transform:scale(1); }
+  }
+  .lightbox-close {
+    position: fixed; top: 1.5rem; right: 1.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); cursor: pointer;
+    background: var(--surface); border: 1px solid var(--border);
+    padding: .45rem .9rem;
+    transition: color .2s, border-color .2s;
+    z-index: 10001;
+  }
+  .lightbox-close:hover { color: var(--text); border-color: var(--accent); }
+  .lightbox-caption {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Space Mono', monospace; font-size: .62rem;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); z-index: 10001;
+  }
+
+  /* Client section label */
+  .ads-client-label {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .ads-client-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .ads-client-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    padding: .3rem .8rem;
+    border: 1px solid var(--border);
+  }
+
+  /* ── BRANDING GRID (3 items, square) ── */
+  .branding-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .branding-grid .work-thumb { aspect-ratio: 1/1; }
+
+  /* ── PROJECT CARD ── */
+  .work-item .work-meta {
+    padding: 1.1rem 1.4rem 1.3rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    transition: background .3s;
+  }
+  .work-item:hover .work-meta { background: var(--bg3); }
+  .work-meta-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: .8rem;
+  }
+  .work-meta-name {
+    font-size: .82rem; color: var(--text);
+    font-family: 'Syne', sans-serif; font-weight: 700;
+  }
+  .work-meta-cat {
+    font-family: 'Space Mono', monospace;
+    font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); margin-top: .28rem;
+  }
+  .work-meta-desc {
+    font-size: .78rem; color: var(--muted);
+    line-height: 1.65; margin-top: .5rem;
+  }
+  .work-meta-footer {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-top: .9rem; gap: .8rem; flex-wrap: wrap;
+  }
+  .work-meta-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .work-tag {
+    font-family: 'Space Mono', monospace; font-size: .52rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--border);
+    padding: .18rem .45rem;
+    transition: border-color .2s, color .2s;
+  }
+  .work-item:hover .work-tag { border-color: rgba(61,142,240,.35); color: var(--text); }
+  .work-live-btn {
+    font-family: 'Space Mono', monospace; font-size: .55rem;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: .28rem .7rem;
+    display: inline-flex; align-items: center; gap: .4rem;
+    white-space: nowrap;
+    transition: background .2s, color .2s;
+    flex-shrink: 0;
+  }
+  .work-live-btn:hover { background: var(--accent); color: #fff; }
+  .work-badge-soon {
+    font-family: 'Space Mono', monospace; font-size: .52rem;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--border);
+    padding: .28rem .7rem; white-space: nowrap; flex-shrink: 0;
+  }
+  /* Unique thumbnail gradients */
+  .wc-mindbudget {
+    background: linear-gradient(135deg, #04100a 0%, #082a14 45%, rgba(34,197,94,.15) 100%);
+  }
+  .wc-nextrade {
+    background: linear-gradient(135deg, #06060e 0%, #0e0e2a 45%, rgba(139,92,246,.18) 100%);
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color .2s;
+    position: relative; z-index: 2;
+    margin-bottom: 2rem;
+  }
+  .back-link:hover { color: var(--accent); }
+  .back-link svg { transition: transform .2s; }
+  .back-link:hover svg { transform: translateX(-3px); }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: var(--bg3);
+    padding: 5rem 3rem;
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 2rem; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    transition: var(--transition-theme);
+  }
+  .cta-strip-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    line-height: 1.1; color: var(--text);
+  }
+  .cta-strip-text em { font-style: italic; color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .page-hero { padding: 8rem 1.5rem 3rem; }
+    .filter-bar { padding: 2rem 1.5rem 0; }
+    .category-section { padding: 4rem 1.5rem; }
+    .webdev-grid .work-item:nth-child(n) { grid-column: 1 / -1; }
+    .ads-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .branding-grid { grid-template-columns: 1fr 1fr; }
+    .category-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .cta-strip { padding: 3.5rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+</div>
+<div class="scroll-progress" id="scrollBar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">PIXELBYTE<span>.</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work"> My Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
+      <span class="toggle-icon">🌙</span>
+      <div class="toggle-pill" id="togglePill"></div>
+      <span class="toggle-icon">☀️</span>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-blob phb1"></div>
+  <div class="page-hero-blob phb2"></div>
+  <a href="index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    Back to Home
+  </a>
+  <div class="page-hero-label">Portfolio</div>
+  <h1 class="page-hero-title">All <em>Work</em></h1>
+  <p class="page-hero-sub">A curated collection across web development, advertising design, and brand identity.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="webdev">Web Development</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="ads">Ads Design</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="branding">Branding</button>
+</div>
+
+
+<!-- ══ WEB DEVELOPMENT ══ -->
+<section class="category-section" id="webdev" data-category="webdev">
+  <div class="category-header reveal">
+    <div>
+      <div class="section-label">01</div>
+      <h2 class="section-title">Web <em>Development</em></h2>
+      <div class="category-count">6 Projects</div>
+    </div>
+  </div>
+
+  <div class="webdev-2col reveal">
+
+    <!-- MindBudget -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="overflow:hidden;">
+        <img src="mindbudget-cover.png" alt="MindBudget" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">MindBudget</div>
+            <div class="webdev-cat">Web App · Full Stack</div>
+          </div>
+          <a href="https://mindbudget-zcyw.onrender.com" target="_blank" rel="noopener" class="work-live-btn">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="webdev-desc">A wellness and finance web app helping university students track mood, manage stress, and stay on top of their budget — all in one place.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">Flask</span>
+          <span class="work-tag">PostgreSQL</span>
+          <span class="work-tag">Python</span>
+          <span class="work-tag">PWA</span>
+          <span class="work-tag">Render</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NexTrade -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="overflow:hidden;">
+        <img src="nextrade-cover.png" alt="NexTrade" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">NexTrade</div>
+            <div class="webdev-cat">Web App · Trading Platform</div>
+          </div>
+          <a href="https://nextradexchange.netlify.app" target="_blank" rel="noopener" class="work-live-btn">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="webdev-desc">A trading and portfolio management platform with market monitoring, analytics, and transaction management for digital asset investors.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">React</span>
+          <span class="work-tag">Supabase</span>
+          <span class="work-tag">Tailwind</span>
+          <span class="work-tag">Recharts</span>
+        </div>
+      </div>
+    </div>
+
+        <!-- NaijaBite -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="overflow:hidden;">
+        <img src="naijabite-cover.png" alt="NaijaBite" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">NaijaBite</div>
+            <div class="webdev-cat">Web App · Food Delivery</div>
+          </div>
+          <a href="https://ov3rlord-x.github.io/Naijabite/" target="_blank" rel="noopener" class="work-live-btn">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="webdev-desc">A Lagos-focused fast-food delivery experience — browse Naija favourites through an interactive dish carousel, with Naira pricing and a 30-minute delivery promise.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">HTML</span>
+          <span class="work-tag">CSS</span>
+          <span class="work-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voltify -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="overflow:hidden;">
+        <img src="voltify-cover.png" alt="Voltify" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">Voltify</div>
+            <div class="webdev-cat">Web App · Electronics Store</div>
+          </div>
+          <a href="https://ov3rlord-x.github.io/Voltify/" target="_blank" rel="noopener" class="work-live-btn">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="webdev-desc">A Nigerian electronics storefront for genuine gadgets with real warranties and same-day Lagos delivery — featuring a 3D product hero and clean Naira-priced shopping.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">HTML</span>
+          <span class="work-tag">CSS</span>
+          <span class="work-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- LUXE -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="overflow:hidden;">
+        <img src="luxe-cover.png" alt="LUXE Nigeria" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">LUXE Nigeria</div>
+            <div class="webdev-cat">Web App · Luxury Fashion</div>
+          </div>
+          <a href="https://ov3rlord-x.github.io/Luxe/" target="_blank" rel="noopener" class="work-live-btn">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Live Site
+          </a>
+        </div>
+        <div class="webdev-desc">A luxury fashion and lifestyle storefront spotlighting Nigerian designers — authenticated high-end pieces across fashion, beauty, and jewellery, with an editorial, gold-accented aesthetic.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">HTML</span>
+          <span class="work-tag">CSS</span>
+          <span class="work-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Placeholder 6 -->
+    <div class="webdev-card">
+      <div class="webdev-thumb" style="background:linear-gradient(135deg,#050a18 0%,#0b1535 60%,rgba(61,142,240,.2) 100%);"></div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">Project Six</div>
+            <div class="webdev-cat">Coming Soon</div>
+          </div>
+          <span class="work-badge-soon">Coming Soon</span>
+        </div>
+        <div class="webdev-desc">Details coming soon.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ ADS DESIGN ══ -->
+<section class="category-section" id="ads" data-category="ads">
+  <div class="category-header reveal">
+    <div>
+      <div class="section-label">02</div>
+      <h2 class="section-title">Ads <em>Design</em></h2>
+      <div class="category-count">12 Projects</div>
+    </div>
+  </div>
+
+  <!-- Heyloni: 5×6 portrait -->
+  <div class="ads-client-label reveal">
+    <span class="ads-client-tag">Heyloni Restaurant</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-5x6" onclick="openLightbox('new-adsArtboard-2.png','Discover the Flavour of Perfection — Heyloni')">
+      <div class="ads-img-wrap"><img src="new-adsArtboard-2.png" alt="Heyloni Chicken Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Discover the Flavour of Perfection</div>
+        <div class="work-meta-cat">Heyloni · Social Media Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x6" onclick="openLightbox('new-adsArtboard-3.png','Pepper Soup at Your Doorstep — Heyloni')">
+      <div class="ads-img-wrap"><img src="new-adsArtboard-3.png" alt="Heyloni Pepper Soup Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Pepper Soup at Your Doorstep</div>
+        <div class="work-meta-cat">Heyloni · Social Media Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x6" onclick="openLightbox('new-adsArtboard-4.png','Hotter! Tastier! Better! Shawarma — Heyloni')">
+      <div class="ads-img-wrap"><img src="new-adsArtboard-4.png" alt="Heyloni Shawarma Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Hotter! Tastier! Better! Shawarma</div>
+        <div class="work-meta-cat">Heyloni · Social Media Ad</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gadjets: 5×5 square -->
+  <div class="ads-client-label reveal" style="margin-top:3rem">
+    <span class="ads-client-tag">Gadjets Store</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-5x5" onclick="openLightbox('GadjetsArtboard-1.png','AirPod Max — 20% Off · Gadjets')">
+      <div class="ads-img-wrap"><img src="GadjetsArtboard-1.png" alt="AirPod Max Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">AirPod Max — 20% Off Promo</div>
+        <div class="work-meta-cat">Gadjets · Product Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('GadjetsArtboard-2.png','JBL Speaker — $150 Promo · Gadjets')">
+      <div class="ads-img-wrap"><img src="GadjetsArtboard-2.png" alt="JBL Speaker Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">JBL Speaker — $150 Promo</div>
+        <div class="work-meta-cat">Gadjets · Product Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('GadjetsArtboard-3.png','Smart Watch Series 8 — 40% Off · Gadjets')">
+      <div class="ads-img-wrap"><img src="GadjetsArtboard-3.png" alt="Smart Watch Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Smart Watch Series 8 — 40% Off</div>
+        <div class="work-meta-cat">Gadjets · Product Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('GadjetsArtboard-4.png','PS5 Wireless Controller — 30% Off · Gadjets')">
+      <div class="ads-img-wrap"><img src="GadjetsArtboard-4.png" alt="PS5 Controller Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">PS5 Wireless Controller — 30% Off</div>
+        <div class="work-meta-cat">Gadjets · Product Ad</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pixel's Edits Business -->
+  <div class="ads-client-label reveal" style="margin-top:3rem">
+    <span class="ads-client-tag">Pixel's Edits — Business</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-5x5" onclick="openLightbox('business-agency.png','Creative Digital Marketing Agency — Pixel\'s Edits')">
+      <div class="ads-img-wrap"><img src="business-agency.png" alt="Digital Marketing Agency Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Creative Digital Marketing Agency</div>
+        <div class="work-meta-cat">Pixel's Edits · Business Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('business-solutions.png','Creative Business Solutions Agency — Pixel\'s Edits')">
+      <div class="ads-img-wrap"><img src="business-solutions.png" alt="Business Solutions Agency Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Creative Business Solutions Agency</div>
+        <div class="work-meta-cat">Pixel's Edits · Business Ad</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('cleaning-service.png','Reliable Cleaning Service — Pixel\'s Edits')">
+      <div class="ads-img-wrap"><img src="cleaning-service.png" alt="Cleaning Service Ad"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Reliable Cleaning Service</div>
+        <div class="work-meta-cat">Pixel's Edits · Service Ad</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Design — Drinks -->
+  <div class="ads-client-label reveal" style="margin-top:3rem">
+    <span class="ads-client-tag">Product Design — Drinks</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-5x5" onclick="openLightbox('drinks-lipton.png','Lipton Green Ice Tea Matcha — Product Design')">
+      <div class="ads-img-wrap"><img src="drinks-lipton.png" alt="Lipton Matcha Product Design"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Lipton Green Ice Tea Matcha</div>
+        <div class="work-meta-cat">Product Design · Drinks</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x5" onclick="openLightbox('drinks-sprite.png','Fresh Sprite — Product Design')">
+      <div class="ads-img-wrap"><img src="drinks-sprite.png" alt="Sprite Product Design"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Fresh Sprite</div>
+        <div class="work-meta-cat">Product Design · Drinks</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- ══ BRANDING ══ -->
+<section class="category-section" id="branding" data-category="branding">
+  <div class="category-header reveal">
+    <div>
+      <div class="section-label">03</div>
+      <h2 class="section-title">Brand <em>Identity</em></h2>
+      <div class="category-count">2 Projects</div>
+    </div>
+  </div>
+
+  <div class="webdev-2col reveal">
+
+    <!-- BAO Travels n Tours -->
+    <div class="webdev-card" style="cursor:pointer;" onclick="window.open('bao-brand-guideline.pdf','_blank')">
+      <div class="webdev-thumb" style="overflow:hidden; position:relative;">
+        <img src="bao-cover.png" alt="BAO Travels n Tours" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+        <div style="position:absolute;top:.8rem;right:.8rem;background:var(--accent);padding:.25rem .6rem;font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;">View PDF ↗</div>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">BAO Travels N Tours</div>
+            <div class="webdev-cat">Brand Identity · Travel & Tourism</div>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:.28rem .7rem;white-space:nowrap;flex-shrink:0;">PDF</span>
+        </div>
+        <div class="webdev-desc">Complete brand identity for a Nigerian travel and tours company — logo system, color palette, typography, brand patterns, and full stationery applications.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">Logo Design</span>
+          <span class="work-tag">Brand Guideline</span>
+          <span class="work-tag">Typography</span>
+          <span class="work-tag">Stationery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACRES Buildwell -->
+    <div class="webdev-card" style="cursor:pointer;" onclick="window.open('acres-profile.pdf','_blank')">
+      <div class="webdev-thumb" style="overflow:hidden; position:relative;">
+        <img src="acres-cover.png" alt="ACRES Buildwell PVT LTD" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1);"/>
+        <div style="position:absolute;top:.8rem;right:.8rem;background:var(--accent);padding:.25rem .6rem;font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;">View PDF ↗</div>
+      </div>
+      <div class="webdev-meta">
+        <div class="webdev-meta-top">
+          <div>
+            <div class="webdev-name">ACRES Buildwell PVT LTD</div>
+            <div class="webdev-cat">Brand Identity · Construction</div>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:.28rem .7rem;white-space:nowrap;flex-shrink:0;">PDF</span>
+        </div>
+        <div class="webdev-desc">Brand identity and company profile for a construction and interior design firm — logo, visual identity system, and professional company documentation.</div>
+        <div class="work-meta-tags">
+          <span class="work-tag">Logo Design</span>
+          <span class="work-tag">Company Profile</span>
+          <span class="work-tag">Visual Identity</span>
+          <span class="work-tag">Print</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-text">Like what you see?<br>Let's build something <em>remarkable.</em></div>
+  <a href="index.html#contact" class="btn-primary">Start a Project</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 PIXELBYTE. All rights reserved.</div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/pixel_edits246?igsh=NWt5dWMzc3JkZHhx&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.behance.net/abdulsalamidris3" target="_blank" rel="noopener">Behance</a>
+    <a href="https://pin.it/2vy3QLzXB" target="_blank" rel="noopener">Pinterest</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕ Close</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const categorySections = document.querySelectorAll('.category-section');
+
+  function applyFilter(filter) {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    const matchBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+    if (matchBtn) matchBtn.classList.add('active');
+    categorySections.forEach(section => {
+      section.style.display = (filter === 'all' || section.dataset.category === filter)
+        ? 'block' : 'none';
+    });
+  }
+
+  const hash = window.location.hash.replace('#', '');
+  const validFilters = ['webdev', 'ads', 'branding'];
+  if (validFilters.includes(hash)) {
+    applyFilter(hash);
+    setTimeout(() => {
+      const target = document.getElementById(hash);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
+  } else {
+    applyFilter('all');
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyFilter(btn.dataset.filter);
+      history.replaceState(null, '', btn.dataset.filter === 'all' ? '#' : '#' + btn.dataset.filter);
+    });
+  });
+
+  // ── Lightbox
+  function openLightbox(src, caption) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    const cap = document.getElementById('lightboxCaption');
+    img.src = src;
+    cap.textContent = caption || '';
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('lightboxImg').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
