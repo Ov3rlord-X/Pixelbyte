@@ -834,3 +834,36 @@ footer {
     gap: 1.2rem;
   }
 }
+
+@media (max-width: 900px) {
+ 
+  /* hide the photo card on mobile only */
+  .hero-visual { display: none !important; }
+ 
+  /* HOW I WORK — single-column zig-zag on mobile */
+  #process .process-steps {
+    grid-template-columns: 1fr;   /* one per row */
+    gap: 2.5rem;
+  }
+ 
+  /* odd steps (1st, 3rd) hug the LEFT */
+  #process .process-step:nth-child(odd) {
+    text-align: left;
+    margin-right: 22%;
+  }
+  /* even steps (2nd, 4th) hug the RIGHT */
+  #process .process-step:nth-child(even) {
+    text-align: right;
+    margin-left: 22%;
+  }
+  /* keep the top accent line spanning each card */
+  #process .process-step::before { left: 0; right: 0; width: 100%; }
+}
+ 
+/* keep the zig-zag on very small phones too
+   (overrides the earlier 560px rule that forced 2 columns) */
+@media (max-width: 560px) {
+  #process .process-steps { grid-template-columns: 1fr; }
+  #process .process-step:nth-child(odd)  { text-align: left;  margin-right: 14%; }
+  #process .process-step:nth-child(even) { text-align: right; margin-left: 14%; }
+}
