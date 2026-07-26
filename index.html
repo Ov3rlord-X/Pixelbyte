@@ -19,22 +19,34 @@
 <nav>
   <a href="#" class="nav-logo">PIXELBYTE<span>.</span></a>
   <div class="nav-right">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="work.html">My Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
-        <span class="toggle-icon">🌙</span>
-        <div class="toggle-pill" id="togglePill"></div>
-        <span class="toggle-icon">☀️</span>
-      </div>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="work.html">My Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
+      <span class="toggle-icon">🌙</span>
+      <div class="toggle-pill" id="togglePill"></div>
+      <span class="toggle-icon">☀️</span>
     </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+  <ul class="mobile-menu-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="work.html">My Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="idris-cv.pdf" target="_blank" rel="noopener">My Resume</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -51,7 +63,7 @@
     </p>
     <div class="hero-cta">
       <a href="#work" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-ghost">Let's Talk</a>
+      <a href="idris-cv.pdf" class="btn-ghost" target="_blank" rel="noopener">My Resume</a>
     </div>
   </div>
 
@@ -66,10 +78,8 @@
         <div class="hcard-sub">Graphics + Code</div>
       </div>
     </div>
-    </div>
   </div>
 </section>
-
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
@@ -256,7 +266,6 @@
   </div>
 </section>
 
-
 <!-- TESTIMONIAL -->
 <section id="testimonial">
   <div class="section-label" style="justify-content:center">Kind Words</div>
@@ -268,7 +277,6 @@
   </blockquote>
   <div class="testimonial-author reveal" style="transition-delay:.2s">— BAO Travels N Tours</div>
 </section>
-
 
 <!-- CONTACT -->
 <section id="contact">
@@ -349,9 +357,7 @@
     btn.textContent = 'Send Message';
     btn.disabled = false;
   });
-</script>
 
-<script>
   function openHeroLightbox() {
     document.getElementById('heroLightbox').classList.add('active');
     document.body.style.overflow = 'hidden';

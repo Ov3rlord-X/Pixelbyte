@@ -1,8 +1,8 @@
 // ── Detect touch / no-hover devices (skip custom cursor entirely)
 const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
- 
+
 const cursor = document.getElementById('cursor');
- 
+
 if (isTouch) {
   if (cursor) cursor.style.display = 'none';
   document.documentElement.style.cursor = 'auto';
@@ -11,13 +11,13 @@ if (isTouch) {
   const dot = cursor.querySelector('.cursor-dot');
   const ring = cursor.querySelector('.cursor-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
- 
+
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     dot.style.left = mx + 'px';
     dot.style.top = my + 'px';
   });
- 
+
   (function animRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
@@ -26,7 +26,7 @@ if (isTouch) {
     requestAnimationFrame(animRing);
   })();
 }
- 
+
 // ── Scroll progress
 const bar = document.getElementById('scrollBar');
 if (bar) {
@@ -36,7 +36,7 @@ if (bar) {
     bar.style.transform = 'scaleX(' + p + ')';
   });
 }
- 
+
 // ── Reveal on scroll (single shared observer)
 const reveals = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
@@ -52,18 +52,18 @@ if ('IntersectionObserver' in window) {
 } else {
   reveals.forEach(r => r.classList.add('visible'));
 }
- 
+
 // ── Theme toggle (with persistence)
 const html = document.documentElement;
 const toggle = document.getElementById('themeToggle');
- 
+
 const savedTheme = localStorage.getItem('pixelbyte-theme');
 if (savedTheme) {
   html.setAttribute('data-theme', savedTheme);
 } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
   html.setAttribute('data-theme', 'light');
 }
- 
+
 if (toggle) {
   toggle.addEventListener('click', () => {
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -71,19 +71,19 @@ if (toggle) {
     localStorage.setItem('pixelbyte-theme', next);
   });
 }
- 
+
 // ── Mobile menu
 const navBurger = document.getElementById('navBurger');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileMenuClose = document.getElementById('mobileMenuClose');
- 
+
 let menuOverlay = document.querySelector('.mobile-menu-overlay');
 if (!menuOverlay && mobileMenu) {
   menuOverlay = document.createElement('div');
   menuOverlay.className = 'mobile-menu-overlay';
   document.body.appendChild(menuOverlay);
 }
- 
+
 function openMenu() {
   mobileMenu.classList.add('open');
   navBurger.classList.add('open');
@@ -96,7 +96,7 @@ function closeMenu() {
   if (menuOverlay) menuOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
- 
+
 if (navBurger && mobileMenu) {
   navBurger.addEventListener('click', () => {
     mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
@@ -107,4 +107,3 @@ if (navBurger && mobileMenu) {
     link.addEventListener('click', closeMenu)
   );
 }
- 
