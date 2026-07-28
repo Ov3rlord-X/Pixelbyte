@@ -699,3 +699,48 @@ footer {
   #process .process-step:nth-child(odd)  { margin-right:12%; }
   #process .process-step:nth-child(even) { margin-left:12%; }
 }
+
+/* ── MORE WORK / PINTEREST STRIP ── */
+.more-work {
+  background: var(--bg2);
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  border-top: 1px solid var(--border);
+  transition: var(--transition-theme);
+}
+.more-work-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  color: var(--text);
+  max-width: 560px;
+  line-height: 1.5;
+}
+.pinterest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .85rem 1.8rem;
+  background: #e60023;           /* Pinterest red */
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 40px;
+  transition: transform .2s, box-shadow .3s;
+  box-shadow: 0 4px 20px rgba(230,0,35,.25);
+}
+.pinterest-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(230,0,35,.35);
+}
+ 
+@media (max-width: 900px) {
+  .more-work { padding: 3rem 1.5rem; }
+}
