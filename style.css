@@ -230,7 +230,7 @@ nav::after {
 #hero {
   min-height:100vh;
   display:grid; grid-template-columns:1fr 1fr;
-  align-items:center;
+  align-items:start;
   padding:8rem 3rem 4rem;
   position:relative; overflow:hidden;
 }
@@ -278,8 +278,17 @@ nav::after {
   opacity:0; animation:fadeUp .9s .72s forwards;
 }
 .hero-cta {
-  margin-top:2.6rem; display:flex; gap:1.2rem; flex-wrap:wrap;
+  margin-top:2.6rem;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap:.9rem;
   opacity:0; animation:fadeUp .9s .92s forwards;
+}
+.hero-cta-row {
+  display:flex;
+  gap:1.2rem;
+  flex-wrap:wrap;
 }
 
 .btn-primary {
@@ -743,4 +752,13 @@ footer {
  
 @media (max-width: 900px) {
   .more-work { padding: 3rem 1.5rem; }
+}
+@media (max-width: 560px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-cta a {
+    text-align: center;
+  }
 }
