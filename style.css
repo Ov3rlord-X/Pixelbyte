@@ -716,8 +716,9 @@ footer {
    ═══════════════════════════════════════════ */
 @media (max-width: 900px) {
   #hero, #about, #contact { grid-template-columns:1fr; gap:3rem; }
-  .services-grid { grid-template-columns:1fr; }
-  .work-grid { grid-template-columns:1fr; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .work-grid { grid-template-columns:repeat(2,1fr); }
+  .work-grid > *:last-child { display:none; }
   nav { padding:1.2rem 1.5rem; }
   section { padding:5rem 1.5rem; }
 
@@ -742,6 +743,19 @@ footer {
     margin-left:20%;
   }
   #process .process-step::before { left:0; right:0; width:100%; }
+
+  /* 2-col cards need tighter type/padding at half-width */
+  .service-card { padding:1.6rem 1.2rem; }
+  .service-icon { width:32px; height:32px; margin-bottom:1rem; }
+  .service-name { font-size:1.08rem; margin-bottom:.5rem; }
+  .service-desc { font-size:.76rem; line-height:1.6; }
+  .service-tags { gap:.4rem; margin-top:1rem; }
+  .service-tags .tag { font-size:.54rem; padding:.18rem .45rem; }
+  .service-num { font-size:.56rem; margin-bottom:1rem; }
+
+  .work-label { font-size:.68rem; }
+  .work-cat { font-size:.5rem; letter-spacing:.1em; }
+  .work-label-wrap { padding:.9rem 1rem; }
 }
 
 @media (max-width: 560px) {
