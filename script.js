@@ -1,3 +1,45 @@
+// ── Work lightbox (shared: index.html + work.html)
+function openLightbox(src, caption) {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  const img = document.getElementById('lightboxImg');
+  const cap = document.getElementById('lightboxCaption');
+  img.src = src;
+  cap.textContent = caption || '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// ── Figma prototypes: desktop proto on PC, mobile proto on phones/tablets
+(function () {
+  function isMobileViewer() {
+    return window.matchMedia('(max-width: 820px)').matches
+        || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+  function applyProtoLinks() {
+    var mobile = isMobileViewer();
+    document.querySelectorAll('.figma-proto-link').forEach(function (a) {
+      a.href = mobile ? a.dataset.protoMobile : a.dataset.protoDesktop;
+    });
+  }
+  applyProtoLinks();
+  var t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(applyProtoLinks, 200);
+  });
+})();
+
 // ── Detect touch / no-hover devices (skip custom cursor entirely)
 const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
