@@ -191,6 +191,16 @@
   .ads-card.ratio-5x5 .ads-img-wrap {
     aspect-ratio: 5 / 5;
   }
+  .ads-card.ratio-4x3 .ads-img-wrap { 
+    aspect-ratio: 4 / 3; }
+
+  .ads-card.ratio-5x8 .ads-img-wrap { 
+    aspect-ratio: 5 / 8; }
+
+  .ads-card.ratio-mag .ads-img-wrap { 
+    aspect-ratio: 17 / 22; }
+
+
   .ads-img-wrap {
     width: 100%;
     overflow: hidden;
@@ -223,23 +233,6 @@
     font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
     color: var(--muted); white-space: nowrap;
     padding: .3rem .8rem; border: 1px solid var(--border);
-  }
-
-  /* Client section label */
-  .ads-client-label {
-    display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 1.2rem;
-  }
-  .ads-client-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
-  .ads-client-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-    padding: .3rem .8rem;
-    border: 1px solid var(--border);
   }
 
   /* ── BRANDING GRID (3 items, square) ── */
@@ -767,12 +760,84 @@
     <div>
       <div class="section-label">03</div>
       <h2 class="section-title">Ads <em>Design</em></h2>
-      <div class="category-count">12 Projects</div>
+      <div class="category-count">30 Projects</div>
+    </div>
+  </div>
+
+  <!-- Package Design -->
+  <div class="ads-client-label reveal">
+    <span class="ads-client-tag">Package Design</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-5x8" onclick="openLightbox('packageArtboard_6.jpg','AURA — Vitamin C Brightening Serum Packaging')">
+      <div class="ads-img-wrap"><img src="packageArtboard_6.jpg" alt="AURA Skincare Packaging"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">AURA — Skincare Packaging</div>
+        <div class="work-meta-cat">Package Design · Skincare</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x8" onclick="openLightbox('packageArtboard_5.jpg','Pure Chips — Plantain Chips Packaging')">
+      <div class="ads-img-wrap"><img src="packageArtboard_5.jpg" alt="Pure Chips Packaging"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Pure Chips — Snack Packaging</div>
+        <div class="work-meta-cat">Package Design · Food</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-5x8" onclick="openLightbox('PackagingArtboard_8.jpg','Fresh Juice — Bottle Label Packaging')">
+      <div class="ads-img-wrap"><img src="PackagingArtboard_8.jpg" alt="Fresh Juice Bottle Packaging"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Fresh Juice — Bottle Packaging</div>
+        <div class="work-meta-cat">Package Design · Beverage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Magazine -->
+  <div class="ads-client-label reveal" style="margin-top:3rem">
+    <span class="ads-client-tag">Magazine</span>
+  </div>
+
+  <div class="ads-grid reveal">
+    <div class="ads-card ratio-mag" onclick="openLightbox('MAGAZINE_2Artboard_3.jpg','MUSE — The Texure Issue')">
+      <div class="ads-img-wrap"><img src="MAGAZINE_2Artboard_3.jpg" alt="MUSE Magazine Cover"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">MUSE — The Texure Issue</div>
+        <div class="work-meta-cat">Magazine · Editorial Cover</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-mag" onclick="openLightbox('MAGAZINE_4Artboard_4.jpg','Business Magazine — Top 500+ Startups To Watch')">
+      <div class="ads-img-wrap"><img src="MAGAZINE_4Artboard_4.jpg" alt="Business Magazine Cover"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Top 500+ Startups To Watch</div>
+        <div class="work-meta-cat">Magazine · Business Cover</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-mag" onclick="openLightbox('MAGAZINE_5Artboard_5.jpg','ASHOKE — 1st African Heritage Fashion House')">
+      <div class="ads-img-wrap"><img src="MAGAZINE_5Artboard_5.jpg" alt="ASHOKE Magazine Cover"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">ASHÒKÉ — Heritage Fashion House</div>
+        <div class="work-meta-cat">Magazine · Fashion Cover</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-mag" onclick="openLightbox('MAGAZINE_6Artboard_2.jpg','Fashion — Street Culture, Elevated')">
+      <div class="ads-img-wrap"><img src="MAGAZINE_6Artboard_2.jpg" alt="Fashion Magazine Cover"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">Fashion — Street Culture, Elevated</div>
+        <div class="work-meta-cat">Magazine · Fashion Cover</div>
+      </div>
+    </div>
+    <div class="ads-card ratio-mag" onclick="openLightbox('MAGAZINEArtboard_1.jpg','STANCE — The Art of Standing Out')">
+      <div class="ads-img-wrap"><img src="MAGAZINEArtboard_1.jpg" alt="STANCE Magazine Cover"/></div>
+      <div class="ads-card-meta">
+        <div class="work-meta-name">STANCE — The Art of Standing Out</div>
+        <div class="work-meta-cat">Magazine · Editorial Cover</div>
+      </div>
     </div>
   </div>
 
   <!-- Heyloni: 5×6 portrait -->
-  <div class="ads-client-label reveal">
+  <div class="ads-client-label reveal" style="margin-top:3rem">
     <span class="ads-client-tag">Heyloni Restaurant</span>
   </div>
 
@@ -1092,7 +1157,7 @@
   }
 
   const hash = window.location.hash.replace('#', '');
-  const validFilters = ['webdev', 'ads', 'branding'];
+  const validFilters = ['uiux', 'webdev', 'ads', 'branding'];
   if (validFilters.includes(hash)) {
     applyFilter(hash);
     setTimeout(() => {
